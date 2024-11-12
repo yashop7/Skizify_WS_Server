@@ -10,6 +10,7 @@ export interface Chat {
   name: string;
   userId: string;
   userImage?: string;
+  messageTime : string;
 }
 
 export class UserManager {
@@ -170,7 +171,7 @@ export class UserManager {
   messageHandler(UserIO: Server, meetingId: string, UserSocket: Socket) {
     UserSocket.on(
       "send-message",
-      ({ message, name, userId, userImage }: Chat) => {
+      ({ message, name, userId, userImage , messageTime }: Chat) => {
         // console.log("Yeah GOT the message, Sending on Particular Room Id");
         // console.log("Broadcasting to room:", meetingId);
         // console.log("Message is this ====>", message);
