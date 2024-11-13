@@ -188,5 +188,17 @@ export class UserManager {
         });
       }
     );
+
+    UserSocket.on(
+      "update-messages-seen",
+      ({ incrementMessageId, userId }: { incrementMessageId: number[], userId: string }) => {
+        console.log("these are the message to be updated", incrementMessageId);
+        UserIO.to(meetingId).emit("messages-seen-update", {
+          messageIds: incrementMessageId,
+          userId,
+        });
+      }
+    );
+  
   }
 }
