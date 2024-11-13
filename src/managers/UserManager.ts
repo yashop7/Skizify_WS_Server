@@ -6,11 +6,13 @@ export interface User {
   meetingId: string;
 }
 export interface Chat {
+  id : number;
   message: string;
   name: string;
   userId: string;
   userImage?: string;
   messageTime : string;
+  seenStatus : boolean;
 }
 
 export class UserManager {
@@ -171,15 +173,18 @@ export class UserManager {
   messageHandler(UserIO: Server, meetingId: string, UserSocket: Socket) {
     UserSocket.on(
       "send-message",
-      ({ message, name, userId, userImage , messageTime }: Chat) => {
+      ({id , message, name, userId, userImage , messageTime, seenStatus }: Chat) => {
         // console.log("Yeah GOT the message, Sending on Particular Room Id");
         // console.log("Broadcasting to room:", meetingId);
         // console.log("Message is this ====>", message);
         UserIO.to(meetingId).emit("receive-message", {
+          id,
           message,
           name,
           userId,
           userImage,
+          messageTime,
+          seenStatus
         });
       }
     );
