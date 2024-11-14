@@ -191,11 +191,9 @@ export class UserManager {
 
     UserSocket.on(
       "update-messages-seen",
-      ({ incrementMessageId, userId }: { incrementMessageId: number[], userId: string }) => {
-        console.log("these are the message to be updated", incrementMessageId);
+      ({ seenStatus } : {seenStatus : boolean}) => {
         UserIO.to(meetingId).emit("messages-seen-update", {
-          messageIds: incrementMessageId,
-          userId,
+          seenStatus : seenStatus
         });
       }
     );
