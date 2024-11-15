@@ -165,18 +165,12 @@ export class UserManager {
       this.roomManager.stopScreenShare(roomId, userId);
     });
 
-    // UserSocket.on("onsession", ( session : ClientSessionInterface ) => {
-    //   this.roomManager.getSession(session);
-    // } )
   }
 
   messageHandler(UserIO: Server, meetingId: string, UserSocket: Socket) {
     UserSocket.on(
       "send-message",
       ({id , message, name, userId, userImage , messageTime, seenStatus }: Chat) => {
-        // console.log("Yeah GOT the message, Sending on Particular Room Id");
-        // console.log("Broadcasting to room:", meetingId);
-        // console.log("Message is this ====>", message);
         UserIO.to(meetingId).emit("receive-message", {
           id,
           message,
