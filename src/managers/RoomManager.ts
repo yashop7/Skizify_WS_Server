@@ -92,11 +92,5 @@ export class RoomManager {
     const ReceivingUser = userId === User1?.userId ? User2 : User1;
     ReceivingUser?.socket.emit("leave-meeting", { userId });
   }
-  // getSession(session:ClientSessionInterface){
-  //   const room = this.rooms.get(session);
-  // }
 
-  // generateRoomId() {
-  //   return GLOBAL_ROOM_ID++;
-  // }
 }

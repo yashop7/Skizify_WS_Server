@@ -10,10 +10,8 @@ import { UserManager } from "./managers/UserManager";
 
 const app = express();
 
-// Enable CORS
 app.use(cors());
 
-// Parse JSON bodies
 app.use(express.json());
 
 //middleware
