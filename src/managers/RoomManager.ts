@@ -8,7 +8,6 @@ export class RoomManager {
   constructor() {
     this.rooms = new Map();
   }
-
   async createRoom(User1: User, User2: User, meetingId: string) {
     const roomId = meetingId;
     // const RoomId = await prisma.meeting
